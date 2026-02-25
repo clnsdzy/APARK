@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 
 interface ParkCardProps {
   park: Park;
+  priority?: boolean;
 }
 
 const crowdColors: Record<string, string> = {
@@ -17,7 +18,7 @@ const crowdColors: Record<string, string> = {
   High: "bg-red-100 text-red-700",
 };
 
-export function ParkCard({ park }: ParkCardProps) {
+export function ParkCard({ park, priority }: ParkCardProps) {
   return (
     <Link
       href={`/parks/${park.id}`}
@@ -29,6 +30,7 @@ export function ParkCard({ park }: ParkCardProps) {
           src={park.imageUrl}
           alt={park.name}
           fill
+          priority={priority}
           className="object-cover transition-transform duration-300 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />

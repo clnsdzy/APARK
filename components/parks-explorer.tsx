@@ -81,8 +81,8 @@ export function ParksExplorer() {
       {/* Grid */}
       {filtered.length > 0 ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((park) => (
-            <ParkCard key={park.id} park={park} />
+          {filtered.map((park, index) => (
+            <ParkCard key={park.id} park={park} priority={index === 0} />
           ))}
         </div>
       ) : (

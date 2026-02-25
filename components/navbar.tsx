@@ -1,5 +1,3 @@
-'use client';
-
 import Link from "next/link";
 import { TreePine } from "lucide-react";
 import { ThemeToggleWrapper } from "./theme-toggle-wrapper";

@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 import { ParksExplorer } from "@/components/parks-explorer";
 
 export default function Home() {
@@ -22,14 +23,7 @@ export default function Home() {
         <ParksExplorer />
       </main>
 
-      <footer className="mt-16 border-t border-border py-8">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} APARK — Abuja Parks & Recreation. Data
-            is regularly updated. Opening hours may vary on public holidays.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

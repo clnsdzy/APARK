@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Navbar } from '@/components/navbar';
+import { Footer } from '@/components/footer';
 
 export default function AboutPage() {
   return (
@@ -105,13 +106,7 @@ export default function AboutPage() {
         </section>
       </main>
 
-      <footer className="mt-16 border-t border-border py-8">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} APARK — Abuja Parks & Recreation.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

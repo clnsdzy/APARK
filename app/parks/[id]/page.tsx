@@ -280,7 +280,7 @@ export default async function ParkDetailPage({
                 title={`Map of ${park.name}`}
                 src={mapsEmbedUrl}
                 width="100%"
-                height="200"
+                height="320"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"

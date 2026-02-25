@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { TreePine } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
+import { Suspense } from "react";
 
 export function Navbar() {
   return (
@@ -32,7 +33,9 @@ export function Navbar() {
           >
             About
           </Link>
-          <ThemeToggle />
+          <Suspense fallback={<div className="h-10 w-10" />}>
+            <ThemeToggle />
+          </Suspense>
         </nav>
       </div>
     </header>

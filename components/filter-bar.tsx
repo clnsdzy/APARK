@@ -3,13 +3,14 @@
 import { Activity } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { allActivities, allDistricts } from "@/lib/data";
-import { SlidersHorizontal, X } from "lucide-react";
+import { activityIcons } from "@/lib/icon-map";
+import { Heart, MapPinned, SlidersHorizontal, Users, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuCheckboxItem,
+  DropdownMenuContent,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -61,7 +62,6 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      {/* Activities filter */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -72,31 +72,36 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
               filters.activities.length > 0 && "border-primary text-primary"
             )}
           >
+            <SlidersHorizontal className="mr-1.5 h-3.5 w-3.5" />
             Activities
             {filters.activities.length > 0 && (
-              <Badge className="ml-1.5 h-4 w-4 rounded-full p-0 text-[10px] flex items-center justify-center">
+              <Badge className="ml-1.5 flex h-4 w-4 items-center justify-center rounded-full p-0 text-[10px]">
                 {filters.activities.length}
               </Badge>
             )}
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start" className="w-48">
+        <DropdownMenuContent align="start" className="w-56">
           <DropdownMenuLabel className="text-xs">Filter by Activity</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          {allActivities.map((activity) => (
-            <DropdownMenuCheckboxItem
-              key={activity}
-              checked={filters.activities.includes(activity as Activity)}
-              onCheckedChange={() => toggleActivity(activity as Activity)}
-              className="text-xs"
-            >
-              {activity}
-            </DropdownMenuCheckboxItem>
-          ))}
+          {allActivities.map((activity) => {
+            const ActivityIcon = activityIcons[activity as Activity];
+
+            return (
+              <DropdownMenuCheckboxItem
+                key={activity}
+                checked={filters.activities.includes(activity as Activity)}
+                onCheckedChange={() => toggleActivity(activity as Activity)}
+                className="text-xs"
+              >
+                <ActivityIcon className="mr-2 h-3.5 w-3.5" />
+                {activity}
+              </DropdownMenuCheckboxItem>
+            );
+          })}
         </DropdownMenuContent>
       </DropdownMenu>
 
-      {/* District filter */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -107,9 +112,10 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
               filters.districts.length > 0 && "border-primary text-primary"
             )}
           >
+            <MapPinned className="mr-1.5 h-3.5 w-3.5" />
             District
             {filters.districts.length > 0 && (
-              <Badge className="ml-1.5 h-4 w-4 rounded-full p-0 text-[10px] flex items-center justify-center">
+              <Badge className="ml-1.5 flex h-4 w-4 items-center justify-center rounded-full p-0 text-[10px]">
                 {filters.districts.length}
               </Badge>
             )}
@@ -131,7 +137,6 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      {/* Crowd level filter */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -142,9 +147,10 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
               filters.crowdLevels.length > 0 && "border-primary text-primary"
             )}
           >
-            Crowd Level
+            <Users className="mr-1.5 h-3.5 w-3.5" />
+            Crowd
             {filters.crowdLevels.length > 0 && (
-              <Badge className="ml-1.5 h-4 w-4 rounded-full p-0 text-[10px] flex items-center justify-center">
+              <Badge className="ml-1.5 flex h-4 w-4 items-center justify-center rounded-full p-0 text-[10px]">
                 {filters.crowdLevels.length}
               </Badge>
             )}
@@ -166,7 +172,6 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      {/* Family-friendly toggle */}
       <Button
         variant="outline"
         size="sm"
@@ -176,10 +181,10 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
           filters.familyFriendly && "border-primary bg-primary/10 text-primary"
         )}
       >
+        <Heart className="mr-1.5 h-3.5 w-3.5" />
         Family-friendly
       </Button>
 
-      {/* Clear all */}
       {totalActive > 0 && (
         <Button
           variant="ghost"
@@ -192,9 +197,8 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
         </Button>
       )}
 
-      {/* Active filter count */}
       {totalActive > 0 && (
-        <div className="flex items-center gap-1 text-xs text-muted-foreground ml-auto">
+        <div className="ml-auto flex items-center gap-1 text-xs text-muted-foreground">
           <SlidersHorizontal className="h-3.5 w-3.5" />
           <span>{totalActive} filter{totalActive > 1 ? "s" : ""} active</span>
         </div>

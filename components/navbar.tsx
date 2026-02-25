@@ -1,5 +1,8 @@
+'use client';
+
 import Link from "next/link";
 import { TreePine } from "lucide-react";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Navbar() {
   return (
@@ -15,8 +18,8 @@ export function Navbar() {
           </span>
         </Link>
 
-        {/* Nav links */}
-        <nav className="flex items-center gap-6 text-sm text-muted-foreground">
+        {/* Nav links + theme toggle */}
+        <nav className="flex items-center gap-4 text-sm text-muted-foreground">
           <Link
             href="/"
             className="transition-colors hover:text-foreground"
@@ -29,6 +32,7 @@ export function Navbar() {
           >
             About
           </Link>
+          <ThemeToggle />
         </nav>
       </div>
     </header>

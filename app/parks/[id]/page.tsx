@@ -17,12 +17,7 @@ import { Separator } from "@/components/ui/separator";
 import { Navbar } from "@/components/navbar";
 import { parks } from "@/lib/data";
 import { cn } from "@/lib/utils";
-
-const crowdColors: Record<string, string> = {
-  Low: "bg-green-100 text-green-700",
-  Moderate: "bg-amber-100 text-amber-700",
-  High: "bg-red-100 text-red-700",
-};
+import { crowdStyles } from "@/lib/icon-map";
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -111,7 +106,7 @@ export default async function ParkDetailPage({
               <span
                 className={cn(
                   "rounded-full px-2.5 py-0.5 text-xs font-medium",
-                  crowdColors[park.crowdLevel]
+                  crowdStyles[park.crowdLevel].badge
                 )}
               >
                 {park.crowdLevel} crowd

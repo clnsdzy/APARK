@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Star, Ticket, Trees } from "lucide-react";
+import { MapPin, Star, Ticket } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Park } from "@/lib/types";
-import { cn } from "@/lib/utils";
 import { activityIcons, crowdStyles } from "@/lib/icon-map";
+import { cn } from "@/lib/utils";
 
 interface ParkCardProps {
   park: Park;
@@ -28,9 +28,14 @@ export function ParkCard({ park, priority }: ParkCardProps) {
           className="object-cover transition-transform duration-300 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="absolute left-3 top-3 flex h-7 w-7 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
-          {park.rank}
-        </div>
+        <span
+          className={cn(
+            "absolute right-3 top-3 h-3.5 w-3.5 rounded-full ring-1 ring-border",
+            crowdStyles[park.crowdLevel].dot
+          )}
+          aria-label={`${park.crowdLevel} crowd`}
+          title={`${park.crowdLevel} crowd`}
+        />
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-4">
@@ -79,26 +84,7 @@ export function ParkCard({ park, priority }: ParkCardProps) {
           )}
         </div>
 
-        <div className="mt-auto flex items-center justify-between pt-1">
-          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <span className={cn("h-2 w-2 rounded-full", crowdStyles[park.crowdLevel].dot)} />
-            <span
-              className={cn(
-                "rounded-full px-2 py-0.5 text-xs font-medium",
-                crowdStyles[park.crowdLevel].badge
-              )}
-            >
-              {park.crowdLevel} crowd
-            </span>
-          </div>
-
-          {park.familyFriendly && (
-            <span className="inline-flex items-center gap-1 text-xs font-medium text-primary">
-              <Trees className="h-3.5 w-3.5" />
-              Family
-            </span>
-          )}
-        </div>
+        <div className="mt-auto pt-1" />
       </div>
     </Link>
   );

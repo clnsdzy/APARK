@@ -30,8 +30,8 @@ export default function AboutPage() {
 
         <section className="mb-10 flex flex-col gap-4">
           <h2 className="text-lg font-semibold text-foreground">What We Offer</h2>
-          <div className="space-y-3">
-            <div className="rounded-lg bg-secondary p-4">
+          <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+            <div className="rounded-lg bg-secondary p-4 transition-colors duration-300 hover:bg-secondary/70">
               <h3 className="mb-1 inline-flex items-center gap-2 font-medium text-foreground">
                 <Compass className="h-4 w-4 text-primary" />
                 Comprehensive Park Directory
@@ -41,7 +41,7 @@ export default function AboutPage() {
                 and key amenities.
               </p>
             </div>
-            <div className="rounded-lg bg-secondary p-4">
+            <div className="rounded-lg bg-secondary p-4 transition-colors duration-300 hover:bg-secondary/70">
               <h3 className="mb-1 inline-flex items-center gap-2 font-medium text-foreground">
                 <SearchCheck className="h-4 w-4 text-primary" />
                 Smart Filtering
@@ -50,7 +50,7 @@ export default function AboutPage() {
                 Filter parks by activity type, district, crowd levels, and family-friendliness.
               </p>
             </div>
-            <div className="rounded-lg bg-secondary p-4">
+            <div className="rounded-lg bg-secondary p-4 transition-colors duration-300 hover:bg-secondary/70">
               <h3 className="mb-1 inline-flex items-center gap-2 font-medium text-foreground">
                 <MessageCircleHeart className="h-4 w-4 text-primary" />
                 Real Reviews & Ratings
@@ -59,7 +59,7 @@ export default function AboutPage() {
                 Read visitor reviews and ratings to make better decisions before heading out.
               </p>
             </div>
-            <div className="rounded-lg bg-secondary p-4">
+            <div className="rounded-lg bg-secondary p-4 transition-colors duration-300 hover:bg-secondary/70">
               <h3 className="mb-1 inline-flex items-center gap-2 font-medium text-foreground">
                 <Waypoints className="h-4 w-4 text-primary" />
                 Easy Navigation
